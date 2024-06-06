@@ -1,0 +1,91 @@
+File Structure : 
+
+HealthPulse:.
+|   .env
+|   .gitignore
+|   README.md
+|   requirements.txt
+|   test.txt
+|   vercel.json
+|   
+\---api
+    |   Diabetes_Prediction_Logistic_Regression_Model.pkl
+    |   Diabetes_Prediction_Random_Forest_Model.pkl
+    |   index.py
+    |   
+    +---static
+    |   +---css
+    |   |       admin.css
+    |   |       form.css
+    |   |       main.css
+    |   |       style.css
+    |   |       
+    |   +---img
+    |   |   |   avatar.png
+    |   |   |   banner.png
+    |   |   |   bg.jpg
+    |   |   |   favicon.ico
+    |   |   |   health.png
+    |   |   |   HealthPulse.png
+    |   |   |   HERO (1).png
+    |   |   |   HERO (2).png
+    |   |   |   hero-img.png
+    |   |   |   lines.png
+    |   |   |   
+    |   |   +---colab
+    |   |   |       01.png
+    |   |   |       02.png
+    |   |   |       03.png
+    |   |   |       04.png
+    |   |   |       05.png
+    |   |   |       
+    |   |   +---result
+    |   |   |       doctor.png
+    |   |   |       happy.png
+    |   |   |       sad.png
+    |   |   |       vegetable.png
+    |   |   |       
+    |   |   \---tech
+    |   |           chart js.png
+    |   |           colab.png
+    |   |           flask.webp
+    |   |           MongoDB.png
+    |   |           python.png
+    |   |           
+    |   \---js
+    |           script.js
+    |           
+    \---templates
+        |   change_password.html
+        |   diabetes.html
+        |   edit_profile.html
+        |   index.html
+        |   landing_page.html
+        |   login.html
+        |   my_profile.html
+        |   my_report.html
+        |   register.html
+        |   result.html
+        |   upload_file.html
+        |   view_profile.html
+        |   
+        +---admin
+        |       add_route.html
+        |       add_user.html
+        |       change_password_user.html
+        |       colab.html
+        |       dashboard.html
+        |       database.html
+        |       delete_route.html
+        |       delete_user.html
+        |       edit_user.html
+        |       settings.html
+        |       update_route.html
+        |       user_detail.html
+        |       view_user.html
+        |       
+        \---layouts
+                base.html
+                base_admin.html
+                landing_page_base.html
+                

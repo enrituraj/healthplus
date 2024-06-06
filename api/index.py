@@ -1,5 +1,9 @@
 from flask import Flask,render_template,redirect,jsonify,url_for,request,flash,session,send_file,abort
 from functools import wraps
+# import for data processing
+import pickle
+import numpy as np
+
 # Form Validation
 import secrets
 import re
@@ -117,16 +121,41 @@ def my_reports():
         flash('You must be logged in to access this page.', 'error')
         return redirect(url_for('login'))
 
-
-@app.route('/diabetes')
+@app.route('/diabetes', methods=['GET','POST'])
 def diabetes():
-    return render_template('diabetes.html')
+    current_dir = os.getcwd()
+    file_path = os.path.join(current_dir, "api", "Diabetes_Prediction_Logistic_Regression_Model.pkl")
+    # print(file_path)
+    with open(file_path, 'rb') as file:
+        logreg_model = pickle.load(file)
+        
+    user = session.get('user')
+    if request.method == 'POST':    
+        gender = int(request.form['gender'])
+        age = float(request.form['age'])
+        hypertension = int(request.form['hypertension'])
+        heart_disease = int(request.form['heart_disease'])
+        smoking_history = float(request.form['smoking_history'])
+        bmi = float(request.form['bmi'])
+        HbA1c_level = float(request.form['HbA1c_level'])
+        blood_glucose_level = float(request.form['blood_glucose_level'])
 
-@app.route('/heart_diseases')
-def heart_diseases():
-    return render_template('heart_diseases.html')
+        # Create a NumPy array with the input data
+        input_data = np.array([[gender,age, hypertension, heart_disease, smoking_history, bmi, HbA1c_level, blood_glucose_level]])
 
-    
+        # Make predictions using both models
+        logreg_prediction = logreg_model.predict(input_data)
+        # rf_prediction = rf_model.predict(input_data)
+
+        print("logreg_prediction",logreg_prediction)
+
+        return render_template('result.html', logreg_prediction=logreg_prediction[0], user=user)
+    else:
+        if user:
+            return render_template('diabetes.html', user=user)
+        else:
+            flash('You must be logged in to access this page.', 'error')
+            return redirect(url_for('login'))
 
     
 @app.route('/logout')

@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+<title>My Reports | HealthPulse</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+{% endblock title %}
+{% block content %}
+<main class="main">
+    <div class="main_wrapper">
+
+        <div class="alert alert-error">
+            The web page is under maintainance.
+        </div>
+        <div class="form_box">
+            <div class="container">
+                <h2 class="form_title">Health<span> Reports</span> </h2>
+                <h1>Diabetes Prediction Result</h1>
+                <p>Logistic Regression Prediction: {{ logreg_prediction }}</p>
+
+                {% if logreg_prediction == 0 %}
+                <h1>you don't have dibities</h1>
+                <h2>try to eat healthy food</h2>
+                <img src="{{ url_for('static', filename='img/result/happy.png') }}" alt="">
+                <img src="{{ url_for('static', filename='img/result/vegetable.png') }}" alt="">
+                {%else%}
+                <h1>you have dibities you must have to connact with doctor</h1>
+                <img src="{{ url_for('static', filename='img/result/doctor.png') }}" alt="">
+                <img src="{{ url_for('static', filename='img/result/sad.png') }}" alt="">
+
+                {% endif %}
+
+                <button class="btn">Download Report</button>
+            </div>
+
+        </div>
+    </div>
+</main>
+{% endblock content %}

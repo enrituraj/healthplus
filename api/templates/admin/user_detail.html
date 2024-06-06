@@ -1,8 +1,8 @@
 {% extends 'layouts/base_admin.html' %}
 {% block title %}
-    <title>User Details | HealthPulse</title>
-    <style>
-        /* this setting is only for this page 
+<title>User Details | HealthPulse</title>
+<style>
+    /* this setting is only for this page 
         we have to do it because if i am using 
         data tag to pass value in css it get removed by 
         simple-datatables. if you are not using simple-datatables 
@@ -13,25 +13,29 @@
         */
 
 
-        @media (max-width:768px){
-    .users_table tr td:nth-child(1)::before{        
-        content: 'S.No :  ';
+    @media (max-width:768px) {
+        .users_table tr td:nth-child(1)::before {
+            content: 'S.No :  ';
+        }
+
+        .users_table tr td:nth-child(2)::before {
+            content: 'Name :  ';
+        }
+
+        .users_table tr td:nth-child(3)::before {
+            content: 'Email :  ';
+        }
+
+        .users_table tr td:nth-child(4)::before {
+            content: 'Action :  ';
+        }
+
+        .users_table tr td:nth-child(4) form {
+            display: inline-block;
+            vertical-align: text-top;
+        }
     }
-    .users_table tr td:nth-child(2)::before{
-        content: 'Name :  ';
-    }
-    .users_table tr td:nth-child(3)::before{
-        content: 'Email :  ';
-    }
-    .users_table tr td:nth-child(4)::before{
-        content: 'Action :  ';
-    }
-    .users_table tr td:nth-child(4) form{
-        display: inline-block;
-        vertical-align: text-top;
-    }
-}
-    </style>
+</style>
 {% endblock title %}
 {% block content %}
 
@@ -64,48 +68,49 @@
                 </tr>
             </thead>
             <tbody>
-            {% for user in user_data %}
-                
-            <tr>
-                <td>{{loop.index}}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>
+                {% for user in user_data %}
 
-                    <div class="dropdown" data-dropdown="">
-                        <a class="dropdown_btn user__data" data-dropdown-button="">
-                            <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
-                                <i class='bx bx-show-alt'></i> View User
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+
+                        <div class="dropdown" data-dropdown="">
+                            <a class="dropdown_btn user__data" data-dropdown-button="">
+                                <i class='bx bx-dots-vertical-rounded  menu_circle'></i>
                             </a>
-                            <a href="{{ url_for('edit_user', user_id=user._id) }}" class="dropdown_item">
-                                <i class='bx bxs-edit'></i> Edit User
-                            </a>
-                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
-                                <i class='bx bxs-report' ></i> User Report
-                            </a>
-                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
-                                <i class='bx bx-history'></i> Login History
-                            </a>
-                            <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
-                                <i class='bx bxs-inbox'></i> User Message
-                            </a>
-                            <a href="{{ url_for('change_password_user', user_id=user._id) }}" class="dropdown_item">
-                                <i class='bx bx-lock-alt'></i> Change Password
-                            </a>
-                            <a href="{{ url_for('delete_user', user_id=user._id) }}" class="dropdown_item logout">
-                                <i class='bx bx-trash'></i> Delete user</a>
+                            <div class="dropdown-menu">
+                                <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
+                                    <i class='bx bx-show-alt'></i> View User
+                                </a>
+                                <a href="{{ url_for('edit_user', user_id=user._id) }}" class="dropdown_item">
+                                    <i class='bx bxs-edit'></i> Edit User
+                                </a>
+                                <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
+                                    <i class='bx bxs-report'></i> User Report
+                                </a>
+                                <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
+                                    <i class='bx bx-history'></i> Login History
+                                </a>
+                                <a href="{{ url_for('view_user', user_id=user._id) }}" class="dropdown_item">
+                                    <i class='bx bxs-inbox'></i> User Message
+                                </a>
+                                <a href="{{ url_for('change_password_user', user_id=user._id) }}" class="dropdown_item">
+                                    <i class='bx bx-lock-alt'></i> Change Password
+                                </a>
+                                <a href="{{ url_for('delete_user', user_id=user._id) }}" class="dropdown_item logout">
+                                    <i class='bx bx-trash'></i> Delete user</a>
+                            </div>
                         </div>
-                    </div>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
-            {% endfor %}
-           
-        </tbody></table>
+                {% endfor %}
+
+            </tbody>
+        </table>
     </div>
 </div>
 

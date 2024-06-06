@@ -46,13 +46,10 @@
                     HealthPulse</a>
             </div>
             <ul class="main_menu" id="menu">
+                {% if user %}
                 <li class="menu_li"> 
                     <a href="/diabetes" class="menu_link">Diabetes</a>
                 </li>
-                <li class="menu_li">
-                    <a href="/heart_diseases" class="menu_link">Heart Diseases</a>
-                </li>
-                {% if user %}
                 <li class="menu_li">
                     <a href="/logout" class="menu_link lg-hidden">Logout</a>
                 </li>
