@@ -124,7 +124,7 @@ def my_reports():
 @app.route('/diabetes', methods=['GET','POST'])
 def diabetes():
     current_dir = os.getcwd()
-    file_path = os.path.join(current_dir, "api", "Diabetes_Prediction_Logistic_Regression_Model.pkl")
+    file_path = os.path.join(current_dir, "data", "Diabetes_Prediction_Logistic_Regression_Model.pkl")
     # print(file_path)
     with open(file_path, 'rb') as file:
         logreg_model = pickle.load(file)
